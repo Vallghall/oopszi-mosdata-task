@@ -1,7 +1,7 @@
 import express from "express"
 
 const app = express()
-const port = process.env.PORT || 80
+const port = process.env.PORT || 3000
 
 app.set('view engine', 'pug')
 app.use(express.static('./public'))
@@ -16,4 +16,6 @@ app.use((req, res) => {
     res.send("NOT FOUND")
 })
 
-app.listen(port, 'localhost', () => {console.log("Starting Express application")})
+app.listen(port,  async () => {
+    console.log('Server started on port: ' + process.env.PORT)
+})
