@@ -1,4 +1,5 @@
 import express from "express"
+import routes from "./routes/routes.js"
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -6,9 +7,7 @@ const port = process.env.PORT || 3000
 app.set('view engine', 'pug')
 app.use(express.static('./public'))
 
-app.get('/', (req, res) => {
-    res.render('index', {title: 'JS web-server', message: 'First Express Pug App'})
-})
+routes(app)
 
 app.use((req, res) => {
     res.type('text/plain')
@@ -16,4 +15,6 @@ app.use((req, res) => {
     res.send("NOT FOUND")
 })
 
-app.listen(port, 'localhost', () => {console.log("Starting Express application")})
+app.listen(port,() => {
+    console.log('Server started on port: ' + process.env.PORT)
+})
