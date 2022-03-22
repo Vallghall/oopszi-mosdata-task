@@ -1,20 +1,24 @@
 import express from "express"
+import favicon from "serve-favicon"
 import routes from "./routes/routes.js"
+import dotenv from "dotenv"
+
+dotenv.config()
 
 const app = express()
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 80
 
 app.set('view engine', 'pug')
+
 app.use(express.static('./public'))
+app.use(favicon('./public/img/favicon.ico'))
 
 routes(app)
 
 app.use((req, res) => {
-    res.type('text/plain')
-    res.status(404)
-    res.send("NOT FOUND")
+    res.render('404.pug', {title: "Error Page", message: "Error Bad Request"})
 })
 
-app.listen(port,() => {
-    console.log('Server started on port: ' + process.env.PORT)
+app.listen(port, () => {
+    console.log(`Server started at port :${port}`)
 })
