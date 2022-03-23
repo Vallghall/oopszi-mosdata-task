@@ -3,7 +3,7 @@ name: "STG"
 on:
   push:
     branches:
-      - 'ADD-\d+'
+      - 'ADD-[0-9]+'
 
 jobs:
   deploy:
