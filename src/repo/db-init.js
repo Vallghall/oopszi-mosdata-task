@@ -17,7 +17,7 @@ export default () => {
             user: process.env.DB_USER,
             password: process.env.DB_PW,
             database: process.env.DB_NAME,
-        }) : new Client(process.env.DATABASE_URL + "?ssl=true")
+        }) : new Client(process.env.DATABASE_URL + "?ssl=false")
 
     client.connect().then(async () => {
         try {
