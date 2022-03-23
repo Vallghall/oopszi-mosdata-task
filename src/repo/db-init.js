@@ -9,17 +9,17 @@ import { initScript, insertScript, selectAllScript } from './sql-scripts.js'
 
 
 const { Client} = pg
+const configs = {
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    user: process.env.DB_USER,
+    password: process.env.DB_PW,
+    database: process.env.DB_NAME,
+}
 
 
 export default () => {
-    const client = process.env.ENV === 'dev' ? new Client({
-            host: process.env.DB_HOST,
-            port: process.env.DB_PORT,
-            user: process.env.DB_USER,
-            password: process.env.DB_PW,
-            database: process.env.DB_NAME,
-            sslmode: process.env.SSL_MODE,
-        }) : new Client(process.env.DATABASE_URL)
+    const client = new Client(configs)
 
     client.connect().then(async () => {
         try {
