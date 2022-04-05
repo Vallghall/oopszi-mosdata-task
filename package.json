@@ -12,11 +12,13 @@
   "author": "Vallghall",
   "license": "ISC",
   "dependencies": {
+    "@sequelize/core": "^7.0.0-alpha.10",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
-    "lodash": "^4.17.21",
     "pg": "^8.7.3",
+    "pg-hstore": "^2.3.4",
     "pug": "^3.0.2",
-    "serve-favicon": "^2.5.0"
+    "serve-favicon": "^2.5.0",
+    "winston": "^3.6.0"
   }
 }

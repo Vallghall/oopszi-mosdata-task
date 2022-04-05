@@ -1,25 +1,34 @@
-import pg from 'pg'
-import fs from 'fs'
+import { Courts } from "./postgres.js"
 
-import request from '../../src/request/request.js'
+export const selectAll = async () => {
+  return await Courts.findAll()
+}
 
+export const addMosAPIData = async (data) => {
+  selectAll()
+      .then(async rows => {
+        if (Object.keys(rows).length) {
+          await Courts.destroy({
+            truncate: true,
+          })
+              .then(async () => {
+                for (const datum of data) {
+                  await Courts.create(datum)
+                }
+              })
+        } else {
+          for (const datum of data) {
+            await Courts.create(datum)
+          }
 
-const { Pool } = pg
-const dbURL = process.env.DB_URL
-const pool = new Pool(dbURL)
-const [insertScript, selectAllScript] = [
-    readScript("insert.sql"),
-    readScript("select-all.sql"),
-]
-
-function readScript(SQLFileName) {
-    let dst = ""
-    fs.readFile('./src/scripts/'+SQLFileName, "utf-8", (err, data) => {
-        if (err) {
-            console.error(`Failed to read SQL scripts\n${err}`)
-            return
         }
-        dst = data
-    })
-    return dst
+      })
+}
+
+export const selectOne = async (id) => {
+  return await Courts.findAll({
+    where: {
+      id: id,
+    }
+  })
 }
