@@ -3,4 +3,18 @@ html
         title= title
         link(rel="stylesheet", type="text/css", href="/stylesheets/index.css")
     body
-        h1= message
+        table
+            tbody
+                tr
+                    th="Название объекта"
+                    th="Адрес"
+                    th="Адм. округ"
+                    th="Адрес электронной почты"
+                    th="Номер телефона"
+                each court in courts
+                    tr
+                        td= court.ObjectName ? court.ObjectName : "Не указано"
+                        td= court.Address ? court.Address : "Не указано"
+                        td= court.AdmArea ? court.AdmArea : "Не указано"
+                        td= court.Email ? court.Email : "Не указано"
+                        td= court.HelpPhone ? court.HelpPhone : "Не указано"

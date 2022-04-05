@@ -31,7 +31,7 @@ await request()
 
 
 app.use((req, res) => {
-    res.render('404.pug', {title: "Error Page", message: "Error Bad Request"})
+    res.render('404', {title: "Error Page", message: "Error Bad Request"})
 })
 
 app.listen(port, () => {

@@ -4,4 +4,15 @@
   color: black;
 }
 
+table {
+  border: 3px solid black;
+  border-radius: 12px;
+  margin: auto;
+}
+table tbody tr td, table tbody tr th {
+  word-wrap: break-word;
+  max-width: 250px;
+  border: solid 1px black;
+}
+
 /*# sourceMappingURL=index.css.map */
