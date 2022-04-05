@@ -1,0 +1,16 @@
+$font-size-normal: 14pt
+$default-color: black
+
+
+@mixin font-stack($size: $font-size-normal, $color: $default-color)
+  font-family: "Times New Roman", sans-serif
+  font-size: $size
+  color: $color
+
+@mixin rounded($color: $default-color)
+  border: 3px solid $color
+  border-radius: 12px
+
+@mixin limit-table-cell($width)
+  word-wrap: break-word
+  max-width: $width

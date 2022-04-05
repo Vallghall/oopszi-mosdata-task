@@ -1,6 +1,14 @@
-*
-  font-family: "Times New Roman", sans-serif
-  font-size: 14pt
-  color: black
+@use 'definitions' as *
 
-  
+*
+  @include font-stack
+
+table
+  @include rounded
+  margin: auto
+
+  tbody
+    tr
+      td, th
+        @include limit-table-cell(250px)
+        border: solid 1px black
